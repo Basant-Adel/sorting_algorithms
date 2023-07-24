@@ -1,5 +1,15 @@
+#ifndef SORT_H
+#define SORT_H
 
 
+/* The C Standard Library */
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+/* Data structures */
 
 
 /**
@@ -18,9 +28,12 @@ typedef struct listint_s
 } listint_t;
 
 
+/* Prototypes  */
 
-void print_array(const int *array, size_t size);
+
 void print_list(const listint_t *list);
+void bubble_sort(int *array, size_t size);
+void print_array(const int *array, size_t size);
 
 
 #endif
