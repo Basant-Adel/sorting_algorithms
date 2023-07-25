@@ -66,8 +66,8 @@ typedef struct deck_node_s
 char get_valud(deck_node_t *card);
 void sort_deck(deck_node_t **deck);
 int _strcmp(const char *s3, const char *s4);
-void inssttion_sort_deck_kind(deck_node_t **deck);
-void inssttion_sort_deck_value(deck_node_t **deck);
+void insertion_sort_deck_kind(deck_node_t **deck);
+void insertion_sort_deck_value(deck_node_t **deck);
 
 
 #endif

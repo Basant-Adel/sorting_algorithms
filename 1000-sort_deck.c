@@ -17,17 +17,18 @@ int _strcmp(const char *s3, const char *s4)
 	{
 		return (*s3 - *s4);
 	}
+
 	return (0);
 }
 
 
 /**
- * get_valud -> A function to Obtain a card's numerical value
+ * get_value -> A function to Obtain a card's numerical value
  *@card:a deck_node_t card pointer
  *Return: The card's numerical value
  */
 
-char get_valud(deck_node_t *card)
+char get_value(deck_node_t *card)
 {
 	if (_strcmp(card->card->value, "Ace") == 0)
 		return (0);
@@ -65,68 +66,80 @@ char get_valud(deck_node_t *card)
 }
 
 /**
- * inssttion_sort_deck_kind -> A function From spades to diamonds
+ * insertion_sort_deck_kind -> A function From spades to diamonds
  *@deck: A pointer to the doubly-linked list
  */
 
-void inssttion_sort_deck_kind(deck_node_t **deck)
+void insertion_sort_deck_kind(deck_node_t **deck)
 {
-	deck_node_t *itar, *innert, *tmp;
+	deck_node_t *ital, *inert, *tmp;
 
-	itar = (*deck)->next;
-	while (itar != NULL)
+	ital = (*deck)->next;
+	while (ital != NULL)
 	{
-		tmp = itar->next;
-		innert = itar->prev;
-		while (innert != NULL && innert->card->kind > itar->card->kind)
+		tmp = ital->next;
+		inert = ital->prev;
+		while (inert != NULL && inert->card->kind > ital->card->kind)
 		{
-			innert->next = itar->next;
-			if (itar->next != NULL)
-				itar->next->prev = innert;
-			itar->prev = innert->prev;
-			itar->next = innert;
-			if (innert->prev != NULL)
-				innert->prev->next = itar;
+			inert->next = ital->next;
+			if (ital->next != NULL)
+			{
+				ital->next->prev = inert;
+			}
+			ital->prev = inert->prev;
+			ital->next = inert;
+			if (inert->prev != NULL)
+			{
+				inert->prev->next = ital;
+			}
 			else
-				*deck = itar;
-			innert->prev = itar;
-			innert = itar->prev;
+			{
+				*deck = ital;
+			}
+			inert->prev = ital;
+			inert = ital->prev;
 		}
-		itar = tmp;
+		ital = tmp;
 	}
 }
 
 
 /**
- * inssttion_sort_deck_value -> A function to Sort a deck of cards
+ * insertion_sort_deck_value -> A function to Sort a deck of cards
  *@deck: A pointer to the doubly-linked list
  */
 
-void inssttion_sort_deck_value(deck_node_t **deck)
+void insertion_sort_deck_value(deck_node_t **deck)
 {
-	deck_node_t *itar, *innert, *tmp;
+	deck_node_t *ital, *inert, *tmp;
 
-	itar = (*deck)->next;
-	while (itar != NULL)
+	ital = (*deck)->next;
+	while (ital != NULL)
 	{
-		tmp = itar->next;
-		innert = itar->prev;
-		while (innert != NULL && innert->card->kind == itar->card->kind &&
-				get_valud(innert) > get_valud(itar))
+		tmp = ital->next;
+		inert = ital->prev;
+		while (inert != NULL && inert->card->kind == ital->card->kind &&
+				get_value(inert) > get_value(ital))
 		{
-			innert->next = itar->next;
-			if (itar->next != NULL)
-				itar->next->prev = innert;
-			itar->prev = innert->prev;
-			itar->next = innert;
-			if (innert->prev != NULL)
-				innert->prev->next = itar;
+			inert->next = ital->next;
+			if (ital->next != NULL)
+			{
+				ital->next->prev = inert;
+			}
+			ital->prev = inert->prev;
+			ital->next = inert;
+			if (inert->prev != NULL)
+			{
+				inert->prev->next = ital;
+			}
 			else
-				*deck = itar;
-			innert->prev = itar;
-			innert = itar->prev;
+			{
+				*deck = ital;
+			}
+			inert->prev = ital;
+			inert = ital->prev;
 		}
-		itar = tmp;
+		ital = tmp;
 	}
 }
 
@@ -143,6 +156,6 @@ void sort_deck(deck_node_t **deck)
 		return;
 	}
 
-	inssttion_sort_deck_kind(deck);
-	inssttion_sort_deck_value(deck);
+	insertion_sort_deck_kind(deck);
+	insertion_sort_deck_value(deck);
 }
