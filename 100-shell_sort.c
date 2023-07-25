@@ -1,43 +1,57 @@
 #include "sort.h"
 
 /**
- * shell_sort -> Write a function that sorts an array of integers
- *in ascending order using the Shell sort algorithm,
- *using the Knuth sequence
- *
- *@array: It's an Array
- *@size: The Array of size
+ * swaprs_ints - Swap Alternate two integers in an array.
+ * @x: the initial swapped integer to swap.
+ * @z: The next integer to be swapped swap.
+ */
+void swaprs_ints(int *x, int *z)
+{
+int tmp;
+
+tmp = *x;
+*x = *z;
+*z = tmp;
+}
+
+/**
+ * shell_sort - sort Integer arrays should sorted ascending.
+ *     utilising the shell sort algorithm arrange.
+ * @array: a array  collection of integers.
+ * @size: The size array's dimensions.
+ * Description: utilises the Knuth interval hierarchy.
  */
 
 void shell_sort(int *array, size_t size)
 {
-	int i, j, h = 1, temp, flag = 0;
+size_t gap,
+z, u;
 
-	if (!array || size < 2)
-		return;
-	while (h < (int)size)
-		h = 3 * h + 1;
+if (array ==
+NULL ||
+size < 2)
+return;
 
-	while (h > 0)
-	{
-		for (i = h; i < (int)size; i++)
-		{
-			temp = array[i];
-			j = i;
+gap = 1;
+while (gap < (size / 3))
+gap = gap * 3 + 1;
 
-			while (j >= h && temp < array[j - h])
-			{
-				array[j] = array[j - h];
-				j -= h;
-				flag = 1;
-			}
-			array[j] = temp;
-		}
-		h /= 3;
-		if (flag == 1)
-		{
-			print_array(array, size);
-			flag = 0;
-		}
+while (gap >= 1)
+{
+z = gap;
+while (z < size)
+{
+u = z;
+while (u >= gap &&
+array[u - gap] > array[u])
+{
+swaprs_ints(array + u,
+array + (u - gap));
+u -= gap;
+}
+z++;
+}
+gap /= 3;
+print_array(array, size);
 }
 }
