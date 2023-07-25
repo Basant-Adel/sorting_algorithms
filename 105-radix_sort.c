@@ -50,6 +50,7 @@ void radix_sort(int *array, size_t size)
 	while (max / y > 0)
 	{
 		int brews[20] = {0};
+
 		i = 0;
 		while (i < q)
 		{
