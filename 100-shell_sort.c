@@ -1,57 +1,69 @@
 #include "sort.h"
 
 /**
- * swaprs_ints - Swap Alternate two integers in an array.
- * @x: the initial swapped integer to swap.
- * @z: The next integer to be swapped swap.
+ * swap_2_ints - A function to Swap 2 integers in an array
+ *@a: The integer (1)
+ *@b: The next integer (2)
  */
-void swaprs_ints(int *x, int *z)
-{
-int tmp;
 
-tmp = *x;
-*x = *z;
-*z = tmp;
+void swap_2_ints(int *a, int *b)
+{
+
+	int sum;
+
+	sum = *a;
+	*a = *b;
+	*b = sum;
+
 }
 
 /**
- * shell_sort - sort Integer arrays should sorted ascending.
- *     utilising the shell sort algorithm arrange.
- * @array: a array  collection of integers.
- * @size: The size array's dimensions.
- * Description: utilises the Knuth interval hierarchy.
+ * shell_sort -> Write a function that sorts an array of integers
+ *in ascending order using the Shell sort algorithm,
+ *using the Knuth sequence
+ *
+ *@array: It's an Array
+ *@size: The Array of size
  */
 
 void shell_sort(int *array, size_t size)
 {
-size_t gap,
-z, u;
+	size_t gap, s, d;
 
-if (array ==
-NULL ||
-size < 2)
-return;
+	if (array == NULL || size < 2)
+	{
+		return;
+	}
 
-gap = 1;
-while (gap < (size / 3))
-gap = gap * 3 + 1;
+	gap = 1;
 
-while (gap >= 1)
-{
-z = gap;
-while (z < size)
-{
-u = z;
-while (u >= gap &&
-array[u - gap] > array[u])
-{
-swaprs_ints(array + u,
-array + (u - gap));
-u -= gap;
-}
-z++;
-}
-gap /= 3;
-print_array(array, size);
-}
+	while (gap < (size / 3))
+	{
+		gap = gap * 3 + 1;
+	}
+
+	while (gap >= 1)
+	{
+
+		s = gap;
+
+		while (s < size)
+		{
+
+			d = s;
+
+			while (d >= gap && array[d - gap] > array[d])
+			{
+				swap_2_ints(array + d, array + (d - gap));
+				d -= gap;
+			}
+
+			s++;
+
+		}
+
+		gap /= 3;
+		print_array(array, size);
+
+	}
 }
