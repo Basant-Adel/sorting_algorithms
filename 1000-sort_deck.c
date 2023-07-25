@@ -10,12 +10,10 @@
 int _strcmp(const char *b3, const char *b4)
 {
 	for (; *b3 && *b4 && *b3 == *b4; b3++, b4++)
-	{
 		if (*b3 != *b4)
 		{
 			return (*b3 - *b4);
 		}
-	}
 	return (0);
 }
 
@@ -88,19 +86,13 @@ void insertion_sort_deck_kind(deck_node_t **deck)
 		{
 			inners->next = item->next;
 			if (item->next != NULL)
-			{
 				item->next->prev = inners;
-			}
 			item->prev = inners->prev;
 			item->next = inners;
 			if (inners->prev != NULL)
-			{
 				inners->prev->next = item;
-			}
 			else
-			{
 				*deck = item;
-			}
 			inners->prev = item;
 			inners = item->prev;
 		}
@@ -128,19 +120,13 @@ void insertion_sort_deck_value(deck_node_t **deck)
 		{
 			inners->next = item->next;
 			if (item->next != NULL)
-			{
 				item->next->prev = inners;
-			}
 			item->prev = inners->prev;
 			item->next = inners;
 			if (inners->prev != NULL)
-			{
 				inners->prev->next = item;
-			}
 			else
-			{
 				*deck = item;
-			}
 			inners->prev = item;
 			inners = item->prev;
 		}
