@@ -11,43 +11,33 @@
 
 void shell_sort(int *array, size_t size)
 {
-	int x, y, z = 1, temp, flag = 0;
+	int i, j, h = 1, temp, flag = 0;
 
 	if (!array || size < 2)
-	{
 		return;
-	}
+	while (h < (int)size)
+		h = 3 * h + 1;
 
-	while (z < (int)size)
+	while (h > 0)
 	{
-		z = 3 * z + 1;
-	}
-
-	while (z > 0)
-	{
-
-		for (x = z; x < (int)size; x++)
+		for (i = h; i < (int)size; i++)
 		{
-			temp = array[x];
-			y = x;
+			temp = array[i];
+			j = i;
 
-			while (y >= z && temp < array[y - z])
+			while (j >= h && temp < array[j - h])
 			{
-				array[y] = array[y - z];
-				y -= z;
+				array[j] = array[j - h];
+				j -= h;
 				flag = 1;
 			}
-
-			array[y] = temp;
-
+			array[j] = temp;
 		}
-
-		z /= 3;
-
+		h /= 3;
 		if (flag == 1)
 		{
 			print_array(array, size);
 			flag = 0;
 		}
-	}
+}
 }
